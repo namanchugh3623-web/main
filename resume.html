@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryan Sharma — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1510;
+    --paper: #f5f0e8;
+    --accent: #c84b2f;
+    --muted: #7a6f60;
+    --rule: #d4cbb8;
+    --highlight: #e8e0ce;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+  }
+
+  body {
+    background: #e8e2d6;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 16px;
+    line-height: 1.5;
+  }
+
+  .page {
+    background: var(--paper);
+    max-width: 760px;
+    width: 100%;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+    padding: 64px 64px 72px;
+    position: relative;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Decorative corner accent */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 24px;
+    border-bottom: 1.5px solid var(--rule);
+    margin-bottom: 36px;
+  }
+
+  .name-block h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  .name-block h1 span {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .name-block .tagline {
+    margin-top: 6px;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact-block {
+    text-align: right;
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .contact-block a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── BODY LAYOUT ── */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 0 48px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    margin-bottom: 32px;
+  }
+
+  .section-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── ENTRY ── */
+  .entry {
+    margin-bottom: 18px;
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+  }
+
+  .entry-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .entry-date {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .entry-org {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+
+  .entry ul {
+    padding-left: 14px;
+    color: #3d352a;
+  }
+
+  .entry ul li {
+    margin-bottom: 3px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .entry p {
+    font-size: 12px;
+    color: #3d352a;
+    line-height: 1.6;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar section {
+    margin-bottom: 28px;
+  }
+
+  /* Skills */
+  .skill-row {
+    margin-bottom: 9px;
+  }
+
+  .skill-name {
+    font-size: 11.5px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--ink);
+  }
+
+  .skill-bar {
+    height: 3px;
+    background: var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    animation: barGrow 1s ease both;
+    animation-delay: 0.4s;
+  }
+
+  @keyframes barGrow {
+    from { width: 0 !important; }
+  }
+
+  /* Tags */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .tag {
+    background: var(--highlight);
+    color: var(--ink);
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Award badges */
+  .award-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .award-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .award-text {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .award-text strong {
+    display: block;
+    font-weight: 600;
+  }
+
+  .award-text span {
+    color: var(--muted);
+    font-size: 10.5px;
+  }
+
+  /* Languages */
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+  }
+
+  .lang-level {
+    color: var(--muted);
+    font-size: 10.5px;
+  }
+
+  /* Objective */
+  .objective-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--muted);
+    padding: 14px 18px;
+    border-left: 3px solid var(--accent);
+    background: var(--highlight);
+    margin-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="name-block">
+      <h1>Aryan <span>Sharma</span></h1>
+      <p class="tagline">Class XII Graduate · Humanities &amp; Social Sciences</p>
+    </div>
+    <div class="contact-block">
+      <div>📍 Gurugram, Haryana</div>
+      <div>📞 +91 98765 43210</div>
+      <div><a href="mailto:aryan.sharma@email.com">aryan.sharma@email.com</a></div>
+      <div><a href="#">linkedin.com/in/aryansharma</a></div>
+    </div>
+  </header>
+
+  <!-- OBJECTIVE -->
+  <p class="objective-text">
+    A motivated and articulate school graduate with a record of excellence in Model United Nations and competitive sports. Seeking to leverage strong public speaking, analytical, and leadership skills in a challenging undergraduate programme or internship environment.
+  </p>
+
+  <!-- TWO COLUMN BODY -->
+  <div class="body">
+
+    <!-- LEFT / MAIN -->
+    <div class="main">
+
+      <!-- EDUCATION -->
+      <section>
+        <div class="section-label">Education</div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Class XII — CBSE</span>
+            <span class="entry-date">2025</span>
+          </div>
+          <div class="entry-org">Delhi Public School, Gurugram</div>
+          <ul>
+            <li>Stream: Humanities (Political Science, History, Economics, English)</li>
+            <li>Aggregate: 89.4% &nbsp;|&nbsp; Political Science: 96 &nbsp;|&nbsp; English: 94</li>
+            <li>School Topper — Political Science (2024–25)</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Class X — CBSE</span>
+            <span class="entry-date">2023</span>
+          </div>
+          <div class="entry-org">Delhi Public School, Gurugram</div>
+          <ul>
+            <li>Aggregate: 91.2% &nbsp;|&nbsp; Social Science: 98 &nbsp;|&nbsp; English: 95</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- MUN EXPERIENCE -->
+      <section>
+        <div class="section-label">Model United Nations</div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Best Delegate</span>
+            <span class="entry-date">Mar 2025</span>
+          </div>
+          <div class="entry-org">DPSSMUN 2025 — UNSC Committee</div>
+          <ul>
+            <li>Represented France in debate on global cybersecurity governance</li>
+            <li>Drafted and passed a resolution with 8 co-sponsoring delegations</li>
+            <li>Praised by chairs for diplomacy, clause construction, and bloc leadership</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Best Delegate</span>
+            <span class="entry-date">Sep 2024</span>
+          </div>
+          <div class="entry-org">Amity MUN 2024 — ECOSOC Committee</div>
+          <ul>
+            <li>Represented Brazil on sustainable development financing</li>
+            <li>Led a 12-member bloc and facilitated cross-regional consensus</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">High Commendation</span>
+            <span class="entry-date">Jan 2024</span>
+          </div>
+          <div class="entry-org">HRMUN 2024 — Disarmament Committee</div>
+          <ul>
+            <li>Presented working papers on small arms proliferation in conflict zones</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SPORTS -->
+      <section>
+        <div class="section-label">Sports &amp; Athletics</div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Football — School Captain</span>
+            <span class="entry-date">2023–25</span>
+          </div>
+          <div class="entry-org">DPS Gurugram Inter-School Tournament</div>
+          <ul>
+            <li>Led the school team to district-level finals — 2024</li>
+            <li>Best Player of the Tournament — Zonal Championship, 2023</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Athletics — Sprints</span>
+            <span class="entry-date">2022–24</span>
+          </div>
+          <div class="entry-org">Haryana State School Games</div>
+          <ul>
+            <li>Gold Medal — 100m, District Level (2023)</li>
+            <li>Silver Medal — 200m, Inter-School Sports Meet (2022)</li>
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /main -->
+
+    <!-- RIGHT / SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- SKILLS -->
+      <section>
+        <div class="section-label">Skills</div>
+
+        <div class="skill-row">
+          <div class="skill-name"><span>Public Speaking</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name"><span>Research &amp; Analysis</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name"><span>Negotiation</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name"><span>Team Leadership</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name"><span>Essay Writing</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name"><span>MS Office / Canva</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+      </section>
+
+      <!-- AWARDS -->
+      <section>
+        <div class="section-label">Honours</div>
+
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>Best Delegate × 2</strong>
+            <span>DPSSMUN 2025 &amp; Amity MUN 2024</span>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>High Commendation</strong>
+            <span>HRMUN 2024</span>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>Best Player of Tournament</strong>
+            <span>Zonal Football, 2023</span>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>Gold Medal — 100m Sprint</strong>
+            <span>District Sports Meet, 2023</span>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text">
+            <strong>School Topper</strong>
+            <span>Political Science, Class XII</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section>
+        <div class="section-label">Languages</div>
+        <div class="lang-row"><span>English</span><span class="lang-level">Fluent / C1</span></div>
+        <div class="lang-row"><span>Hindi</span><span class="lang-level">Native</span></div>
+        <div class="lang-row"><span>French</span><span class="lang-level">Beginner / A2</span></div>
+      </section>
+
+      <!-- INTERESTS -->
+      <section>
+        <div class="section-label">Interests</div>
+        <div class="tags">
+          <span class="tag">Geopolitics</span>
+          <span class="tag">Football</span>
+          <span class="tag">Debate</span>
+          <span class="tag">Athletics</span>
+          <span class="tag">Current Affairs</span>
+          <span class="tag">Photography</span>
+        </div>
+      </section>
+
+    </div><!-- /sidebar -->
+  </div><!-- /body -->
+
+</div>
+</body>
+</html>
